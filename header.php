@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -7,8 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!--Custom page CSS-->
     <link rel="stylesheet" type="text/css" href="css/fonts.css">
@@ -35,9 +38,7 @@
                 </a>
 
                 <!--HAMBURGER MENU STARTS HERE-->
-                <button class="hamburger hamburger--spin navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#main_menu" aria-controls="main_menu" aria-expanded="false"
-                    aria-label="Toggle navigation"" type=" button">
+                <button class="hamburger hamburger--spin navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu" aria-controls="main_menu" aria-expanded="false" aria-label="Toggle navigation"" type=" button">
                     <span class="hamburger-box">
                         <span class="hamburger-inner"></span>
                     </span>
@@ -49,8 +50,7 @@
                 <div class="collapse navbar-collapse" id="main_menu">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link active" href="index.html#beggin">Naslovna <span
-                                    class="sr-only">(current)</span></a>
+                            <a class="nav-link active" href="index.html#beggin">Naslovna <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="index.html#about">O nama</a>
@@ -82,14 +82,24 @@
                             <!--SUBMENU ENDS HERE-->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#blog">Blog</a>
+                            <a class="nav-link" href="#blog">Kontakt</a>
                         </li>
+                        <?php
+                        if (isset($_SESSION['userId'])) {
+
+                            echo '<form action="includes/logout.inc.php" method="post"> <li class="nav-item">
+                    <a class="nav-link" onclick="document.forms[0].submit(); return false;" name="logout-submit"> Logout </button>
+                    </li> </form>';
+                        } else {
+                            echo ' <li class="nav-item">
+                            <a class="nav-link" href="index.php">Log-in<span class="fa fa-user"></span></a>
+                        </li>';
+                        }
+                        ?>
+
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html#contact">Kontakt</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#user">
-                                Log in <span class="fa fa-user"></span>
+                            <a class="nav-link" href="signup.php">
+                                Registracija
                             </a>
                         </li>
                     </ul>
