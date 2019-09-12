@@ -87,9 +87,9 @@ session_start();
                         <?php
                         if (isset($_SESSION['userId'])) {
 
-                            echo '<form action="includes/logout.inc.php" method="post"> <li class="nav-item">
-                    <a class="nav-link" onclick="document.forms[0].submit(); return false;" name="logout-submit"> Logout </button>
-                    </li> </form>';
+                           echo '<li class="nav-item">
+                            <a class="nav-link" href="includes/logout.inc.php">Logout<span class="fa fa-user"></span></a>
+                        </li>';
                         } else {
                             echo ' <li class="nav-item">
                             <a class="nav-link" href="index.php">Log-in<span class="fa fa-user"></span></a>
